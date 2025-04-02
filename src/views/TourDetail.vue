@@ -299,6 +299,21 @@ const handleBooking = async() => {
     .catch(error => {
       console.error('Lỗi đặt tour!');
     })
+
+    await axios.post(`${baseUrl}/api/send-email`, {
+      email: userDataa.email,
+      text: `Kính gửi Quý khách,
+        Chân thành cảm ơn Quý khách đã tin tưởng và đặt tour cùng chúng tôi. Chúng tôi sẽ liên hệ với Quý khách trong thời gian sớm nhất để cung cấp thêm thông tin chi tiết về chuyến đi.
+        Trân trọng kính chào và mong được phục vụ Quý khách!
+        Thân ái,
+        Đội ngũ GoTravel`
+    })
+    .then(response => {
+      // toast.success(response.data.message)
+    })
+    .catch(error => {
+      // console.error('Lỗi gửi email!');
+    })  
 }
 
 // Phần đánh giá

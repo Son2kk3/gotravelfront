@@ -62,14 +62,21 @@ const handleForgotPassword = async() => {
   errorMessage.value = ''
   
   await axios.post(`${baseUrl}/api/send-email`, {
-    email: forgotEmail.value
+    email: forgotEmail.value,
+    text: `Kính chào Quý khách,
+    Chúng tôi xin chân thành cảm ơn Quý khách đã tin dùng dịch vụ của GoTravel. Để tiếp tục sử dụng tài khoản của mình, Quý khách vui lòng ấn vào đường dẫn dưới đây để đặt lại mật khẩu:
+    [Đặt lại mật khẩu](https://gotravelfront.onrender.com/reset-password)
+    Nếu Quý khách gặp bất kỳ khó khăn nào trong quá trình thực hiện, xin vui lòng liên hệ với chúng tôi để được hỗ trợ.
+    Trân trọng cảm ơn,
+    Đội ngũ GoTravel`
   })
   .then((res) => {
-    alert(res.data.message)
+    // alert(res.data.message)
+    toast.success(res.data.message)
   })
   
   // Simulate sending password reset email
-  alert(`Đã gửi hướng dẫn đặt lại mật khẩu đến ${forgotEmail.value}`)
+  // alert(`Đã gửi hướng dẫn đặt lại mật khẩu đến ${forgotEmail.value}`)
   
   // Reset and hide forgot password form
   forgotEmail.value = ''
