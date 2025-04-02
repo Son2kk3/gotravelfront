@@ -236,7 +236,7 @@ const getTransportIcon = (type) => {
             </ul>
             
             <div class="tab-content" id="domesticToursTabContent">
-              <div class="tab-pane fade show active"  role="tabpanel" aria-labelledby="north-tab">
+              <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="north-tab">
                 <div class="row">
                   <div v-for="tour in domesticTours" :key="tour._id" class="col-md-6 mb-4">
                     <router-link :to="'/tour/' + tour._id" class="text-decoration-none">
