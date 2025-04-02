@@ -55,6 +55,11 @@ const routes = [
     path: '/blog/:slug',
     name: 'BlogDetail',
     component: () => import('../views/BlogDetail.vue')
+  },
+  {
+    path: '/reset-password',
+    name: 'ResetPassword',
+    component: () => import('../views/ResetPassword.vue')
   }
 ]
 

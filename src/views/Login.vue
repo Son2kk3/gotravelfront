@@ -51,7 +51,8 @@ const handleLogin = async() => {
   errorMessage.value = ''
 }
 
-const handleForgotPassword = () => {
+
+const handleForgotPassword = async() => {
   if (!forgotEmail.value.trim()) {
     errorMessage.value = 'Vui lòng nhập địa chỉ email để lấy lại mật khẩu'
     return
@@ -59,6 +60,13 @@ const handleForgotPassword = () => {
   
   // Reset error message
   errorMessage.value = ''
+  
+  await axios.post(`${baseUrl}/api/send-email`, {
+    email: forgotEmail.value
+  })
+  .then((res) => {
+    alert(res.data.message)
+  })
   
   // Simulate sending password reset email
   alert(`Đã gửi hướng dẫn đặt lại mật khẩu đến ${forgotEmail.value}`)
